@@ -1,4 +1,14 @@
 {
+    "name": "czdb/searcher",
+    "description": "A PHP library for efficient IP geolocation using compact database formats.",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Liu Cong",
+            "email": "liucong@rtbasia.com"
+        }
+    ],
     "require": {
         "rybakit/msgpack": "^0.9.1"
     },
@@ -6,5 +16,11 @@
         "psr-4": {
             "Czdb\\": "src/"
         }
-    }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

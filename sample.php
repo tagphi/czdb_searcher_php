@@ -30,3 +30,5 @@ while (true) {
         echo "An error occurred during the search: " . $e->getMessage() . "\nPlease try again.\n";
     }
 }
+
+$dbSearcher->close();
