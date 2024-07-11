@@ -34,6 +34,8 @@ $region = $dbSearcher->search($ip);
 
 echo "搜索结果：\n";
 print_r($region);
+
+$dbSearcher->close();
 ```
 
 请将 `"/path/to/your/database.czdb"` 和 `"YourEncryptionKey"` 替换为您项目中实际的数据库路径和加密密钥。
