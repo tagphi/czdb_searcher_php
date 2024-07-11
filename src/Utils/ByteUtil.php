@@ -1,6 +1,6 @@
 <?php
 
-namespace net\cz88\czdb\utils;
+namespace Czdb\Utils;
 
 class ByteUtil {
     /**

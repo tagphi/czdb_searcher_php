@@ -1,0 +1,7 @@
+/vendor/
+/.idea/
+/.env
+/composer.lock
+*.log
+/cache/
+/tmp/

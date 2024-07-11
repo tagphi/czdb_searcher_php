@@ -1,8 +1,9 @@
 <?php
 
-namespace net\cz88\czdb\entity;
+namespace Czdb\Entity;
 
 use Exception;
+use MessagePack\BufferUnpacker;
 
 class DataBlock {
     private $region;
@@ -17,7 +18,7 @@ class DataBlock {
         try {
             return $this->unpack($geoMapData, $columnSelection);
         } catch (Exception $e) {
-            return "null";
+            return null;
         }
     }
 
@@ -37,10 +38,10 @@ class DataBlock {
 
     private function unpack($geoMapData, $columnSelection) {
         // Assuming MessagePack for PHP is installed and autoloaded
-        $regionUnpacker = new MessagePackUnpacker();
-        $regionUnpacker->reset($this->region);
-        $geoPosMixSize = $regionUnpacker->unpackLong();
-        $otherData = $regionUnpacker->unpackString();
+        $unpacker = new BufferUnpacker();
+        $unpacker->reset($this->region);
+        $geoPosMixSize = $unpacker->unpackInt();
+        $otherData = $unpacker->unpackStr();
 
         if ($geoPosMixSize == 0) {
             return $otherData;
@@ -52,13 +53,12 @@ class DataBlock {
         $regionData = substr($geoMapData, $dataPtr, $dataLen);
         $sb = "";
 
-        $geoColumnUnpacker = new MessagePackUnpacker();
-        $geoColumnUnpacker->reset($regionData);
-        $columnNumber = $geoColumnUnpacker->unpackArrayHeader();
+        $unpacker->reset($regionData);
+        $columnNumber = $unpacker->unpackArrayHeader();
 
         for ($i = 0; $i < $columnNumber; $i++) {
             $columnSelected = ($columnSelection >> ($i + 1) & 1) == 1;
-            $value = $geoColumnUnpacker->unpackString();
+            $value = $unpacker->unpackStr();
             $value = ($value === "") ? "null" : $value;
 
             if ($columnSelected) {

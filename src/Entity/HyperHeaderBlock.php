@@ -1,8 +1,8 @@
 <?php
 
-namespace net\cz88\czdb\entity;
+namespace Czdb\Entity;
 
-use net\cz88\czdb\utils\ByteUtil;
+use Czdb\Utils\ByteUtil;
 
 class HyperHeaderBlock {
     const HEADER_SIZE = 12;

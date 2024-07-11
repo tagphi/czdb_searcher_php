@@ -1,12 +1,10 @@
 <?php
 
-namespace net\cz88\czdb\utils;
-
-require 'entity/DecryptedBlock.php';
+namespace Czdb\Utils;
 
 use Exception;
-use net\cz88\czdb\entity\DecryptedBlock;
-use net\cz88\czdb\entity\HyperHeaderBlock;
+use Czdb\Entity\DecryptedBlock;
+use Czdb\Entity\HyperHeaderBlock;
 
 class HyperHeaderDecoder {
 

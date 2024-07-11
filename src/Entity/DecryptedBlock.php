@@ -1,10 +1,8 @@
 <?php
 
-namespace net\cz88\czdb\entity;
+namespace Czdb\Entity;
 
-require 'utils/ByteUtil.php';
-
-use net\cz88\czdb\utils\ByteUtil;
+use Czdb\Utils\ByteUtil;
 
 class DecryptedBlock {
     private $clientId;

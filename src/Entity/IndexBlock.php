@@ -1,6 +1,6 @@
 <?php
 
-namespace net\cz88\czdb\entity;
+namespace Czdb\Entity;
 
 class IndexBlock {
     private $startIp;
