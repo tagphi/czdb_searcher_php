@@ -4,7 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Czdb\DbSearcher;
 
 // Initialize the DbSearcher with the database path and mode.
-$dbSearcher = new DbSearcher("/Users/liucong/Downloads/tony/ipv4.czdb", "MEMORY", "UBN0Iz3juX2qjK3sWbwcHQ==");
+$dbSearcher = new DbSearcher("/Users/liucong/Downloads/tony/ipv4.czdb", "BTREE", "UBN0Iz3juX2qjK3sWbwcHQ==");
 
 while (true) {
     $ip = readline("Enter IP address (or type 'q' to quit): ");
