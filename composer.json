@@ -1,5 +1,5 @@
 {
-    "name": "czdb/czdb-searcher",
+    "name": "czdb/searcher",
     "description": "A PHP library for efficient IP geolocation using compact database formats.",
     "type": "library",
     "license": "Apache-2.0",
