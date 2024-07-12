@@ -16,7 +16,13 @@ CZDB Searcher 是一个用于高效 IP 地理位置查询的 PHP 库，它使用
 在项目目录下运行以下命令来安装 CZDB Searcher：
 
 ```bash
-composer require czdb/czdb-searcher
+composer require czdb/searcher
+```
+
+如果找不到包，可能是因为你没有使用composer 2.x版本，可以使用以下命令来安装composer 2.x版本：
+
+```bash
+composer self-update --2
 ```
 
 ## 使用方法
