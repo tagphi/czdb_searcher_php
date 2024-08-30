@@ -296,7 +296,7 @@ class DbSearcher {
         }
 
         // less than header range
-        if ($l == 0) {
+        if ($l == 0 && $h <=0) {
             return [0, 0];
         }
 
