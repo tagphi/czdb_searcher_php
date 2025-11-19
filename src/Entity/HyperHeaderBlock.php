@@ -11,6 +11,10 @@ class HyperHeaderBlock {
     protected $clientId;
     protected $encryptedBlockSize;
     protected $encryptedData;
+
+    /**
+     * @var DecryptedBlock
+     */
     protected $decryptedBlock;
 
     public function __construct() {
@@ -49,10 +53,17 @@ class HyperHeaderBlock {
         $this->encryptedData = $encryptedData;
     }
 
+    /**
+     * @return DecryptedBlock
+     */
     public function getDecryptedBlock() {
         return $this->decryptedBlock;
     }
 
+    /**
+     * @param DecryptedBlock $decryptedBlock
+     * @return void
+     */
     public function setDecryptedBlock($decryptedBlock) {
         $this->decryptedBlock = $decryptedBlock;
     }
