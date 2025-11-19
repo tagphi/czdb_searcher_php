@@ -4,6 +4,7 @@ namespace Czdb;
 use Exception;
 use Czdb\Entity\DataBlock;
 use Czdb\Entity\IndexBlock;
+use Czdb\Entity\HyperHeaderBlock;
 use Czdb\Utils\Decryptor;
 use Czdb\Utils\HyperHeaderDecoder;
 
@@ -37,6 +38,11 @@ class DbSearcher {
     private $headerSize = 0;
 
     /**
+     * @var HyperHeaderBlock
+     */
+    private $HyperHeaderBlock = null;
+
+    /**
      * 构造函数，初始化数据库搜索器。
      *
      * @param string $dbFile 数据库文件路径。
@@ -48,9 +54,9 @@ class DbSearcher {
         $this->queryType = $queryType;
         $this->fileName = $dbFile;
         $this->raf = fopen($dbFile, "rb");
-        $headerBlock = HyperHeaderDecoder::decrypt($this->raf, $key);
+        $this->HyperHeaderBlock = HyperHeaderDecoder::decrypt($this->raf, $key);
 
-        $offset = $headerBlock->getHeaderSize();
+        $offset = $this->HyperHeaderBlock->getHeaderSize();
         $this->headerSize = $offset;
 
         fseek($this->raf, $offset);
@@ -96,6 +102,15 @@ class DbSearcher {
     }
 
     /**
+     * 获取DB有效时间，ymd格式
+     * @return int
+     */
+    public function getExpirationDate()
+    {
+        return $this->HyperHeaderBlock->getDecryptedBlock()->getExpirationDate();
+    }
+
+    /**
      * 关闭数据库文件并释放资源。
      */
     public function close() {
@@ -110,6 +125,7 @@ class DbSearcher {
         $this->HeaderSip = [];
         $this->HeaderPtr = [];
         $this->geoMapData = null;
+        $this->HyperHeaderBlock = null;
     }
 
     /**
